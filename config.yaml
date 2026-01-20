@@ -1,5 +1,5 @@
 name: "Weather Station Server"
-version: "1.1.0"
+version: "1.2.0"
 slug: "weather_station"
 description: "Local Weather Station Server for WSLink devices"
 arch:
