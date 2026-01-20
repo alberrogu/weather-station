@@ -19,6 +19,7 @@ class WeatherData(BaseModel):
     rain_daily: Optional[float]
     solar_radiation: Optional[float]
     uv_index: Optional[float]
+    pressure_rel: Optional[float]
 
     class Config:
         orm_mode = True

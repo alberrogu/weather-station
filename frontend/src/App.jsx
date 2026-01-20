@@ -167,6 +167,13 @@ function App() {
                     icon={Sun}
                     color="#fbbf24"
                 />
+                <WeatherCard
+                    title="Barometer"
+                    value={current?.pressure_rel?.toFixed(1)}
+                    unit="hPa"
+                    icon={Gauge}
+                    color="#fca5a5"
+                />
                 {/* Indoor/Extra */}
                 <WeatherCard
                     title="Indoor Temp"
