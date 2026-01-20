@@ -174,14 +174,7 @@ function App() {
                     icon={Gauge}
                     color="#fca5a5"
                 />
-                {/* Indoor/Extra */}
-                <WeatherCard
-                    title="Indoor Temp"
-                    value={current?.temp_in?.toFixed(1)}
-                    unit="°C"
-                    icon={Thermometer}
-                    color="#fca5a5"
-                />
+
 
                 {/* Charts */}
                 <HistoryChart
