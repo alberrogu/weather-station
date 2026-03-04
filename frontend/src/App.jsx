@@ -200,6 +200,8 @@ function App() {
                     color="#38bdf8"
                     title="Precipitation History (7d)"
                     unit="mm"
+                    type="bar"
+                    xFormatter="date"
                 />
 
             </main>
