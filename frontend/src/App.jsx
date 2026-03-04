@@ -7,6 +7,7 @@ import HistoryChart from './components/HistoryChart';
 function App() {
     const [current, setCurrent] = useState(null);
     const [history, setHistory] = useState([]);
+    const [rainHistory, setRainHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [theme, setTheme] = useState('system'); // 'light', 'dark', 'system'
 
@@ -62,12 +63,14 @@ function App() {
         try {
             // In dev, proxy handles /api -> localhost:8000
             // In prod/HA, we serve from same origin
-            const [currRes, histRes] = await Promise.all([
+            const [currRes, histRes, rainRes] = await Promise.all([
                 axios.get('/api/current'),
-                axios.get('/api/history?hours=24')
+                axios.get('/api/history?hours=24'),
+                axios.get('/api/history/rain?days=7')
             ]);
             setCurrent(currRes.data);
             setHistory(histRes.data);
+            setRainHistory(rainRes.data);
         } catch (error) {
             console.error("Error fetching weather data:", error);
         } finally {
@@ -186,16 +189,16 @@ function App() {
                 />
                 <HistoryChart
                     data={history}
-                    dataKey="wind_speed"
-                    color="#a78bfa"
-                    title="Wind Speed History (24h)"
-                    unit="m/s"
+                    dataKey="humidity_out"
+                    color="#60a5fa"
+                    title="Humidity History (24h)"
+                    unit="%"
                 />
                 <HistoryChart
-                    data={history}
+                    data={rainHistory}
                     dataKey="rain_daily"
                     color="#38bdf8"
-                    title="Precipitation History"
+                    title="Precipitation History (7d)"
                     unit="mm"
                 />
 
